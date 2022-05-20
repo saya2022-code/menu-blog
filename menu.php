@@ -4,23 +4,14 @@
 // ①Menuクラス(設計図)を定義
 class Menu{
 
-    //③全てのインスタンスに共通する「プロパティ」と「メソッド」を定義
-     //プロパティ：料理名や値段などの情報、　メソッド：計算や名前取得などの処理
-     //public $プロパティ名
-       //public $name;
-
          //⑪ プロパティを追加
-           public $name;
-           public $price;
-           public $image;
-  
-        //⑤「コンストラクタ」というメソッドを定義
-          //→ インスタンスを生成すると、自動でコンストラクタが呼ばれる＝処理やプロパティを追加できる
-          //public function __construct(引数) { 処理内容 }
-            // public function __construct(){  // __constructはアンダーバーが2つ
-            //   echo '１つのメニューが作られました';
-            //   echo '<br>'; //改行
-            // }
+          //プロパティのアクセス権をprivateに変える
+          private $name;
+          private $price;
+          private $image;
+
+           //数をカウントしていくので、初期値をセットする
+          private $orderCount = 0;
             
             //⑤-3　コンストラクタの引数に個別の情報(⑤-2)が入る。
             public function __construct($name,$price,$image) {
@@ -28,20 +19,32 @@ class Menu{
               $this->name = $name;
               $this->price = $price;
               $this->image = $image;
+              $this->$orderCount = $orderCount;
               
             }
   
-     //③-2 public function メソッド名() { 処理内容 }
-     
-    //   public function hello(){
-      //   echo '私はMenuクラスのインスタンスです';
-      //   echo '<br>'; 
-  
-        //④-2 $thisを使って値を出力する
-         //$this=メソッド内でインスタンスのプロパティやメソッドにアクセスする変数
-        // echo '私は'.$this->name.'です';
-        // echo '<br>'; 
-    //   }
+        //クラスの外からprivateプロパティへアクセスするため、「ゲッターメソッド」を用意
+          //public function getメソッド名() { return ⑤-3の変数 }
+          public function getName(){
+            return $this->name;
+          }
+
+          public function getPrice(){
+            return $this->price;
+          }
+
+          public function getImage(){
+            return $this->image;
+          }
+          
+          public function getOrderCount(){
+            return $this->orderCount;
+          }
+          
+          //値が変わるプロパティなので、セッターメソッドを定義 → 引数$orderCountには、data.phpの「セッターメソッドの引数」に個別の情報が入る
+          public function setOrderCount($orderCount){
+             $this->orderCount = $orderCount;
+          }
 
     //getTaxIncludedPrice＝税金価格を表示するメソッド
     public function getTaxIncludedPrice(){
