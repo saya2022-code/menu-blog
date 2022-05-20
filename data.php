@@ -15,7 +15,6 @@ require_once('menu.php');
         
     //menu.phpで設定したセッターメソッドの引数に、個別の情報を入れる 
       //→ menu.phpの引数$orderCountに入る
-    $juice->setOrderCount(2);
     
     //⑦ ⑤-2のインスタンスを配列にまとめる
     //$配列名 = array( $変数名1,$変数名2..);

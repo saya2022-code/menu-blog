@@ -53,5 +53,13 @@ class Menu{
 
         return floor($this->price*1.08); //floorで小数点以下を切り捨てる
     }
+
+    //getTotalPrice=小計金額(税金価格*注文数)
+    public function getTotalPrice(){
+
+      //$this＝foreachよりプロパティが1つずつ入る変数
+      return $this->getTaxIncludedPrice() * $this->orderCount;
+    }
+
   }
 ?>
