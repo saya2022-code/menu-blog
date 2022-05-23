@@ -29,6 +29,7 @@
         x
         <?php echo $orderCount ?>
         個
+        
       </p>
       <!-- $menuに対してgetTotalPriceメソッドを呼び出して、金額を表示してください -->
       <p class="order-price"><?php echo $menu->getTotalPrice()?>円</p>

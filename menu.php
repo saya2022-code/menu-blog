@@ -3,12 +3,13 @@
 <?php 
 // ①Menuクラス(設計図)を定義
 class Menu{
-
-         //⑪ プロパティを追加
-          //プロパティのアクセス権をprivateに変える
-          private $name;
-          private $price;
-          private $image;
+   
+    // プロパティのアクセス権をprotectedに変更
+    protected static $count = 0; 
+    
+          protected $name;
+          protected $price;
+          protected $image;
 
            //数をカウントしていくので、初期値をセットする
           private $orderCount = 0;
@@ -20,7 +21,9 @@ class Menu{
               $this->price = $price;
               $this->image = $image;
               $this->$orderCount = $orderCount;
-              
+
+              //インスタンスを＋1ずつカウント
+              self::$count ++;
             }
   
         //クラスの外からprivateプロパティへアクセスするため、「ゲッターメソッド」を用意
@@ -61,5 +64,9 @@ class Menu{
       return $this->getTaxIncludedPrice() * $this->orderCount;
     }
 
+    public static function getCount(){
+      //クラスプロパティなので、seld::$プロパティ名
+      return self::$count;
+    }
   }
 ?>
