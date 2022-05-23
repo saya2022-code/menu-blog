@@ -13,10 +13,14 @@ class Drink extends Menu{
     //、親クラス（Menu）のコンストラクタの中身をDrinkクラスにコピー
      //引数に$typeを追加する
   public function __construct($name, $price, $image, $type) {
-    $this->name = $name;
-    $this->price = $price;
-    $this->image = $image;
-    self::$count++;
+
+    //親クラス（Menuクラス）のプロパティはfoodにも記載しており、重複してしまう
+    //　→ 「parent::メソッド名」で重複をまとめられる
+    parent::__construct($name, $price ,$image);
+    // $this->name = $name;
+    // $this->price = $price;
+    // $this->image = $image;
+    // self::$count++;
     
     // typeプロパティに$typeを代入してください
     $this->type = $type;
