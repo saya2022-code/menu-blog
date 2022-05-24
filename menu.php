@@ -68,5 +68,15 @@ class Menu{
       //クラスプロパティなので、seld::$プロパティ名
       return self::$count;
     }
+
+    //❹ findByName＝show.phpにインスタンスを表示する
+    public static function findByName($menus,$name){
+      //data.phpの$menusを使い、$nameが$_GET['name'];と一致するまで繰り返す。
+      foreach($menus as $menu){
+        if($menu->name == $name) { //配列の$nameが$_GET['name'];と一致
+        return $menu; //一致した$nameのインスタンスを戻り値にする → show.phpで表示するため、menu.phpを読み込ませる
+      }
+    }
+   }
   }
 ?>
