@@ -6,11 +6,11 @@
 require_once('menu.php'); //❹の情報
 require_once('data.php'); //$menusや戻り値の情報
 
- //❷ index.phpのクエリ情報(①)を受け取る
+ //❷ index.phpのクエリ情報(❶)を受け取る
   //変数名 = $_GET['キー名'];　で受け取り、変数に代入する
   $menuName = $_GET['name'];
 
- //❺ menu.phpのfindByNameメソッドを呼び出し、メソッドの戻り値を変数に代入する
+ //❺ menu.phpのfindByNameメソッド(❹)を呼び出し、メソッドの戻り値を変数に代入する
    //＝配列$menusから特定のMenuインスタンスを取得
  $menu = Menu::findByName($menus,$menuName);
 ?>
@@ -27,20 +27,33 @@ require_once('data.php'); //$menusや戻り値の情報
   <link href='https://fonts.googleapis.com/css?family=Pacifico|Lato' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div class="review-wrapper container">
+  <div class="review-wrapper container" style="text-align: center;margin: 60px auto;">
     <!-- ❻「名前、ホット(アイス)、辛さ、値段」 を❺から取得して表示-->
-    <img src="<?php echo $menu->getImage() ?>" class="menu-item-image">
+    <img src="<?php echo $menu->getImage() ?>" class="menu-item-image" style="width: 50%;">
     <h3 class="menu-item-name"><?php echo $menu->getName() ?></h3>
 
     <?php if ($menu instanceof Drink): ?>
       <p class="menu-item-type"><?php echo $menu->getType() ?></p>
     <?php else: ?>
       <?php for ($i = 0; $i < $menu->getSpiciness(); $i++): ?>
-        <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/php/chilli.png" class='icon-spiciness'>
+        <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/php/chilli.png" class='icon-spiciness' >
       <?php endfor ?>
     <?php endif ?>
 
     <p class="price">¥<?php echo $menu->getTaxIncludedPrice() ?>(税込)</p>
+
+    <div class="review-list-wrapper">
+      <div class="review-list">
+        <div class="review-list-title">
+          <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/php/review.png" class='icon-review' style="width: 5%;">
+          <h4>レビュー一覧</h4>
+        </div>
+        <!-- ❼-6 $reviewsの要素をそれぞれ表示 -->
+        <?php foreach($reviews as $review): ?>
+            <h3><?php echo $review->getMenuName()?></h3>
+            <p><?php echo $review->getBody()?><p>
+        <?php endforeach ?>
+
     <a href="index.php">← メニュー一覧へ</a>
 
   </div>
