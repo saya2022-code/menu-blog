@@ -55,7 +55,23 @@ require_once('data.php'); //$menusや戻り値の情報
         <!-- ❼-6 $reviewsの要素をそれぞれ表示　→ メニュー名に応じたレビューの表示(menu.php,❽) -->
         <!-- ❽-5　メニュー名に応じたレビューを表示(❼-6を書き換える) -->
         <?php foreach($menuReviews as $review): ?>
+
+          <!--❾-7 $reviewに対して、引数を$usersとしてgetUserメソッドを呼び出して、戻り値を変数$userに代入 -->
+          <?php $user = $review->getUser($users)?>
             <div class="review-list-item">
+
+            <div class="review-user">
+                <!-- if文で$userのgenderプロパティによって別の画像を表示 -->
+                <?php if($user->getGender() == 'male') :?>
+                    <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/php/male.png" class='icon-user'>
+                <?php else: ?>
+                    <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/php/female.png" class='icon-user'>
+                    <?php endif ?>
+
+                <!-- <p>タグの中に、$userのゲッターを用いてnameプロパティを表示 -->
+                <p><?php echo $user->getName()?></p>
+          </div>
+
             <p><?php echo $review->getBody() ?></p>
           </div>
         <?php endforeach ?>
