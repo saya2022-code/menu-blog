@@ -13,6 +13,9 @@ require_once('data.php'); //$menusや戻り値の情報
  //❺ menu.phpのfindByNameメソッド(❹)を呼び出し、メソッドの戻り値を変数に代入する
    //＝配列$menusから特定のMenuインスタンスを取得
  $menu = Menu::findByName($menus,$menuName);
+
+ //❽-4 $menuに対して、$reviewsを引数としてgetReviewsメソッドを呼び出し、メソッドの戻り値を変数に代入する
+ $menuReviews = $menu->getReviews($reviews);
 ?>
 
 <!--❸代入した変数を表示する -->
@@ -29,7 +32,7 @@ require_once('data.php'); //$menusや戻り値の情報
 <body>
   <div class="review-wrapper container" style="text-align: center;margin: 60px auto;">
     <!-- ❻「名前、ホット(アイス)、辛さ、値段」 を❺から取得して表示-->
-    <img src="<?php echo $menu->getImage() ?>" class="menu-item-image" style="width: 50%;">
+    <img src="<?php echo $menu->getImage() ?>" class="menu-item-image" style="width: 100%;">
     <h3 class="menu-item-name"><?php echo $menu->getName() ?></h3>
 
     <?php if ($menu instanceof Drink): ?>
@@ -48,10 +51,13 @@ require_once('data.php'); //$menusや戻り値の情報
           <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/php/review.png" class='icon-review' style="width: 5%;">
           <h4>レビュー一覧</h4>
         </div>
-        <!-- ❼-6 $reviewsの要素をそれぞれ表示 -->
-        <?php foreach($reviews as $review): ?>
-            <h3><?php echo $review->getMenuName()?></h3>
-            <p><?php echo $review->getBody()?><p>
+
+        <!-- ❼-6 $reviewsの要素をそれぞれ表示　→ メニュー名に応じたレビューの表示(menu.php,❽) -->
+        <!-- ❽-5　メニュー名に応じたレビューを表示(❼-6を書き換える) -->
+        <?php foreach($menuReviews as $review): ?>
+            <div class="review-list-item">
+            <p><?php echo $review->getBody() ?></p>
+          </div>
         <?php endforeach ?>
 
     <a href="index.php">← メニュー一覧へ</a>

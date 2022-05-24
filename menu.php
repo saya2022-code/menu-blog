@@ -64,6 +64,23 @@ class Menu{
       return $this->getTaxIncludedPrice() * $this->orderCount;
     }
 
+  //❽ getReviews=メニュー名に応じたレビューを表示させる(❼は全てのレビューが出てしまう)
+    //メニューのnameプロパティとレビューのmenuNameプロパティを用いる
+    public function getReviews($reviews) {
+    //❽-1　空の配列（$reviewsForMenu）を用意
+    $reviewsForMenu = array();
+
+    //❽-2 $reviewのmenuNameプロパティと、インスタンス自身($this)のnameプロパティを比較する
+    foreach($reviews as $review){
+      if($review->getMenuName() == $this->name) { //menuNameプロパティと、インスタンスのnameプロパティが一致
+        //$reviewsForMenuに$reviewを追加する
+        $reviewsForMenu[] = $review;
+      }
+    }
+    //❽-3 $reviewが入った$reviewsForMenuを戻り値とする。→ show.phpで呼び出し、表示させる(❽-4)
+    return $reviewsForMenu;
+    }
+
     public static function getCount(){
       //クラスプロパティなので、seld::$プロパティ名
       return self::$count;
@@ -78,5 +95,11 @@ class Menu{
       }
     }
    }
+
+
+
   }
+ 
+
+  
 ?>

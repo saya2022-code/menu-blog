@@ -19,7 +19,7 @@ require_once('menu.php');
       <div class="menu-items">
         <?php foreach ($menus as $menu): ?>
           <div class="menu-item">
-            <img src="<?php echo $menu->getImage() ?>" class="menu-item-image">
+            <img src="<?php echo $menu->getImage() ?>" class="menu-item-image" style="width: 100%;">
 
             <!-- ❶クエリ情報を入れ、どのメニューの詳細か指定する
                   クエリ情報＝URLの末尾の「?」以降に「キー名=値」
