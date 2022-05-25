@@ -9,14 +9,16 @@ class Review{
     private $userName;
 
     //❼-2 コンストラクト → ❾-4 $userName追加
-    public function __construct($menuName,$userName,$body){
+      // → ➓-6　$userNameから$userIdに変更
+    public function __construct($menuName,$userId,$body){
 
     //親クラス（Menuクラス）のプロパティの重複を避ける
     //　→ 「parent::メソッド名」で重複をまとめられる
     // parent::__construct($name, $price ,$image);
 
       $this->menuName  = $menuName;
-      $this->userName = $userName; //→プロパティを追加したので、data.phpの個別情報も変わる(❾-5)
+      //$this->userName = $userName; //→プロパティを追加したので、data.phpの個別情報も変わる(❾-5)
+      $this->userId = $userId; //➓-7　
       $this->body = $body;
     }
 
@@ -34,7 +36,10 @@ class Review{
     public function getUser($users){
         //「review.phpのuserName」が「user.php」と一致するまで配列$usersの中身を繰り返す
         foreach($users as $user){
-            if($user->getName() == $this->userName){
+
+            //➓-8 紐づける条件の変更により、nameからidに変更
+             //show.phpでgetUserメソッドを表示する処理はすでにあるので、あとはブラウザで反映を確認
+            if($user->getId() == $this->userId){
                 return $user;
             }
         }
