@@ -12,6 +12,9 @@ require_once('menu.php');
   <link href='https://fonts.googleapis.com/css?family=Pacifico|Lato' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <div id="head">
+    <?php require_once('header.php'); ?>
+  </div>
   <div class="menu-wrapper container">
     <h1 class="logo">Café Progate</h1>
     <h3>メニュー<?php echo Menu::getCount() ?>品</h3>

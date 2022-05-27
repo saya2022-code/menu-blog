@@ -9,6 +9,10 @@
   <link href='https://fonts.googleapis.com/css?family=Pacifico|Lato' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <div id="head">
+    <?php require_once('header.php'); ?>
+  </div>
+
   <div class="order-wrapper">
     <h2>注文内容確認</h2>
 
@@ -37,6 +41,12 @@
 
     <!-- 合計金額を表示する -->
     <h3>合計金額：<?php echo $totalPayment ?>円</h3>
+
+  </div>
+
+  <div class="order-button">
+    <a href="index.php">キャンセル</a>
+    <a href="order.php">確定</a>
   </div>
 </body>
 </html>

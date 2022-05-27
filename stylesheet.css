@@ -20,6 +20,60 @@ body {
   color: #89949e;
 }
 
+/* header ================================ */
+#head{
+  width: 40%;
+}
+
+.header-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 700px;
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
+  height: 80px;
+}
+
+.header-nav > a {
+  color: #2B546A;
+  font-weight: bold;
+}
+
+.header-nav p {
+  padding-left: 30px;
+  font-size: 15px;
+  color: #2B546A;
+  font-weight: bold;
+  word-wrap: break-word;
+  opacity: 0.7;
+  flex: 1;
+}
+
+.header-nav ul {
+  text-align: right;
+  display: flex;
+}
+
+.header-nav li > a {
+  white-space: nowrap;
+  display: inline-block;
+  font-size: 15px;
+  color: #2B546A;
+  font-weight: bold;
+  padding-left: 30px;
+}
+
+ul, li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
 h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
@@ -27,6 +81,7 @@ h2, h3, h4, h5, h6 {
 a {
   text-decoration: none;
   color: #4ac0b9;
+  margin-right: 20px;
 }
 
 a:hover {
@@ -250,10 +305,29 @@ input[type="submit"] {
   text-align: center;
 }
 
+.review-content{
+  float: right;
+  text-align: center;
+  margin: auto 0;
+}
 .review-text {
   display: inline-block;
   vertical-align: top;
-  margin-top: 16px;
-  margin-left: 10px;
+  margin-right: 7px;
   font-size: 15px;
+}
+
+.order-button{
+  text-align: center;
+  font-size: 20px;
+}
+
+.create-area{
+  text-align: center;
+  font-size: 20px;
+  margin: 20px auto;
+}
+
+form{
+  margin: 20px auto;
 }

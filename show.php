@@ -72,14 +72,19 @@ require_once('data.php'); //$menusや戻り値の情報
                     <!--❾-9 <p>タグの中に、$userのゲッターを用いてnameプロパティを表示 -->
                     <p><?php echo $user->getName()?></p>
                 </div>
-            
-          <p class="review-text"><?php echo $review->getBody() ?></p>
+                <div class="review-content">
+                  <p class="review-text">⭐️⭐️⭐️</p>
+                  <br>
+                  <p class="review-text"><?php echo $review->getBody() ?></p>
+                </div>
           </div>
         <?php endforeach ?>
       </div>
     </div>
 
     <a href="index.php">← メニュー一覧へ</a>
+    
+    <a href="create.php">口コミを投稿する</a>
 
   </div>
 </body>
